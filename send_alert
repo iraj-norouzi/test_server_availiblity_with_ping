@@ -1,0 +1,17 @@
+#!/bin/bash
+if [[ $1 == "1" ]];then
+    curl --request POST 'http://localhost:3580/v1/457A45592F556E63653437635A47614D346231304F32574D72335374712B7236/sms/send.json' --data "receptor=09197269557&message=TDE:($2) server is DOWN!"
+    curl --request POST 'http://localhost:3580/v1/457A45592F556E63653437635A47614D346231304F32574D72335374712B7236/sms/send.json' --data "receptor=09383613893&message=TDE:($2) server is DOWN!"
+    curl --request POST 'http://localhost:3580/v1/457A45592F556E63653437635A47614D346231304F32574D72335374712B7236/sms/send.json' --data "receptor=09372476530&message=TDE:($2) server is DOWN!"
+    python   /usr/sbin/send_email_alert.py i.noroozi@fwutech.com   "TDE:($2) server is DOWN!"
+    python   /usr/sbin/send_email_alert.py v.negahdari@fwutech.com "TDE:($2) server is DOWN!"
+    python   /usr/sbin/send_email_alert.py a.alaee@fwutech.com   "TDE:($2) server is DOWN!"
+fi
+
+if [[ $1 == "2" ]];then
+    curl --request POST 'http://localhost:3580/v1/457A45592F556E63653437635A47614D346231304F32574D72335374712B7236/sms/send.json' --data "receptor=09197269557&message=TDE:($2) server is UP!"
+    curl --request POST 'http://localhost:3580/v1/457A45592F556E63653437635A47614D346231304F32574D72335374712B7236/sms/send.json' --data "receptor=09383613893&message=TDE:($2) server is UP!"
+    #python   /usr/sbin/send_email_alert.py i.noroozi@fwutech.com "TDE:($2) server is UP!"
+    #python   /usr/sbin/send_email_alert.py v.negahdari@fwutech.com "TDE:($2) server is UP!"
+
+fi
